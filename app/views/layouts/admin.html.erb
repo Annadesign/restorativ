@@ -42,10 +42,16 @@
 
                 <li class="<%= is_active_controller('admin/articles') %>">
                     <%= link_to admin_articles_path(:cat => '2') do %>
-                        <i class="fa fa-align-justify"></i> Artikler
+                        <i class="fa fa-align-justify"></i> Behandlinger
                     <% end %>
-                </li>                
+                </li>
+                <li class="<%= is_active_controller('admin/articles') %>">
+                    <%= link_to admin_articles_path(:cat => '3') do %>
+                        <i class="fa fa-align-justify"></i> Fakta
+                    <% end %>
+                </li>                          
             </ul>
+
          
 
         </div>

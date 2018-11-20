@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::ApplicationController
 
   def index
    # @articles = Article.where(:section_id => params[:cat])
-    @articles = Article.order(position: :asc)
+    @articles = Article.where(:section_id => params[:cat]).order(position: :asc)
   end
 
   def reorder

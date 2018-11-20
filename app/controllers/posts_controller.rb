@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
 		@articles 	= Article.ordered
 
+		@facts = Article.facts
+
 		#@contacts 	= Contact.published
 
 	end

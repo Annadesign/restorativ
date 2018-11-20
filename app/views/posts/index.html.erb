@@ -31,7 +31,14 @@
         </div>
       </div>
     </section>
-    <!-- Bølger -->    
+    <!-- Bølger --> 
+    <!-- Fakta -->  
+    <section class="about_us_area landing_one_version clearfix section_padding_100_70 clearfix" id="fakta">
+    <% @facts.each do |fact| %>
+      <%= render fact.template, artic: fact %>
+    <% end %>         
+    </section>
+    <!-- /Fakta--> 
     <!-- Kontakt -->
     <section class="message_now_area landing_one_version section_padding_100_70" id="kontakt">
         <div class="container">
@@ -39,7 +46,7 @@
                 <div class="col-md-12">
                     <div class="message_title">
                         <div class="section_heading">
-                            <h3>Ta kontakt for en uforpliktende prat</h3>
+                            <h3>Ta gjerne kontakt for en hyggelig prat</h3>
                         </div>
                     </div>
                     <div class="image" style="text-align: center; width:100%"><%= image_tag('signy-web.jpg', :class => "", :style => "width:450px;") %></div>
