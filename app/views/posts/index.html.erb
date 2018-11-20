@@ -15,7 +15,7 @@
     <!-- Intro -->    
 
     <!-- Artikler -->
-    <section class="about_us_area landing_one_version clearfix section_padding_100_70 clearfix" id="tjenester">
+    <section class="about_us_area landing_one_version section_padding_100_70 clearfix" id="tjenester">
 	<% @articles.each do |art| %>
   		<%= render art.template, artic: art %>
 	<% end %>	    		
@@ -33,7 +33,7 @@
     </section>
     <!-- Bølger --> 
     <!-- Fakta -->  
-    <section class="about_us_area landing_one_version clearfix section_padding_100_70 clearfix" id="fakta">
+    <section class="about_us_area landing_one_version section_padding_100_70 clearfix" id="kontakt">
     <% @facts.each do |fact| %>
       <%= render fact.template, artic: fact %>
     <% end %>         
