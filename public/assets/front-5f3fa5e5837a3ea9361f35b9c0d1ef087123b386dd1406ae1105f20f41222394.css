@@ -1,16 +1,16 @@
     /* :: 1.0 Import All CSS */
 
 
-    @import './bootstrap/bootstrap.min.css';
-    @import './others/animate.css';
-    @import './others/YTPlayer.css';
-    @import './others/navigation.css';
-    @import './icon/ionicons.min.css';
-    @import './icon/pe-icon-7-stroke.css';
-    @import './icon/wfmi-style.css';
-    @import './icon/et-line.css';
-    @import './icon/classy-icon.css';
-    @import './classy-shortcodes.min.css';
+    @import 'front/bootstrap/bootstrap.min.css';
+    @import 'front/others/animate.css';
+    @import 'front/others/YTPlayer.css';
+    @import 'front/others/navigation.css';
+    @import 'front/icon/ionicons.min.css';
+    @import 'front/icon/pe-icon-7-stroke.css';
+    @import 'front/icon/wfmi-style.css';
+    @import 'front/icon/et-line.css';
+    @import 'front/icon/classy-icon.css';
+    @import 'front/classy-shortcodes.min.css';
 
     /* :: 2.0 Common CSS */
 
