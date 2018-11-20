@@ -1,6 +1,10 @@
 /*
  * Manifest file for front styles, to be compiled into application.scss
  *
+ *= require front/bootstrap.min
+ *= require front/animate
+ *= require front/navigation
+ *= require front/classy-shortcodes.min
  *= require front/core-style
  *= require front/style
  *= require front/responsive
