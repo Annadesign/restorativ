@@ -4,4 +4,7 @@ class Article < ApplicationRecord
    scope :published, -> { where(ispublished: true).order(id: :desc) }
 
    scope :ordered, -> { where(ispublished: true, :section_id => '2').order(:position) }
+
+   mount_uploader :image, ImageUploader
+   
 end
