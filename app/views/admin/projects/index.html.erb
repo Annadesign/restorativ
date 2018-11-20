@@ -1,0 +1,34 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+      <p id="notice"><%= notice %></p>
+
+
+      <table class="table table-bordered table-hover" >
+        <thead>
+          <tr>
+            <th>Prosjekt</th>
+            <th>Beskrivelse</th>
+            <th colspan="2">Handlinger</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.title %></td>
+              <td><%= project.summary %></td>
+              <td><%= link_to 'Redigere', edit_admin_project_path(project, :cat => params[:cat]), :class => 'btn btn-info btn-xs' %></td>
+              <td><%= link_to 'Slett', admin_project_path(project, :cat => params[:cat]), :class => 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Er du sikker?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Nytt prosjekt', new_admin_project_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+  <section id="section-<%= artic.id %>" style="margin:40px 0;padding:20px 0;">
+    <div class="container article-content">
+ 
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-xs-12 col-sm-12">
+              <h2><%= artic.title %></h2>
+              <div class="article-content">
+                  <%= artic.content.html_safe %>
+              </div> 
+              <div class="attachments">
+               
+                <% artic.attachments.each do |d| %>
+                  <p><%= link_to d.description, d.attachment.url, :target => 'blank' %></p>
+                <% end %>
+               
+              </div>
+            </div>
+          </div>
+
+    </div>
+  </section>

@@ -1,0 +1,33 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+
+
+      <table class="table table-bordered table-hover" >
+        <thead>
+          <tr>
+            <th>Tjeneste</th>
+            <th>Beskrivelse</th>
+            <th colspan="2">Handlinger</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @services.each do |service| %>
+            <tr>
+              <td><i class="fa fa-<%=service.icon%>"></i> <%= service.title %></td>
+              <td><%= service.description.html_safe %></td>
+              <td><%= link_to 'Redigere', edit_admin_service_path(service, :cat => params[:cat]), :class => 'btn btn-info btn-xs' %></td>
+              <td><%= link_to 'Slett', admin_service_path(service, :cat => params[:cat]), :class => 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Er du sikker?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Ny tjeneste', new_admin_service_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>

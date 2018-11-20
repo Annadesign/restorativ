@@ -1,0 +1,37 @@
+<div class="ibox">
+  <div class="ibox-title"><h2><i class="fa fa-id-card"></i> Kontaktpersoner</h2></div>
+  <div class="ibox-content">
+    <div class="panel-body">  
+      <p id="notice"><%= notice %></p>
+
+
+      <table class="table table-bordered table-hover" >
+        <thead>
+          <tr>
+            <th>Navn</th>
+            <th>Telefon</th>
+            <th colspan="2">Slette</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= link_to contact.name, edit_admin_contact_path(contact, :cat => params[:cat]) %></td>
+
+              <td><%= contact.telephone %></td>
+              
+
+              <td><%= link_to 'Slette', admin_contact_url(contact, :cat => params[:cat]), :class => 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Er du sikker på at du vil slette?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Ny kontaktperson', new_admin_contact_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+  
+    </div>
+  </div>
+</div>

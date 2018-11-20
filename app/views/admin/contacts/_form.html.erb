@@ -1,0 +1,144 @@
+<%= form_for [:admin, @contact ], html: { multipart: true } do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <input type="hidden" name="contact[section_id]" id="contact_section_id" value="<%= params[:cat] %>" />
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= form.label :name, 'Navn' %>
+            <%= form.text_field :name, id: :contact_name, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">      
+          <div class="form-group">
+            <%= form.label :email, 'Epost' %>
+            <%= form.text_field :email, id: :contact_email, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="form-group">
+            <%= form.label :telephone, 'Telefon' %>
+            <%= form.text_field :telephone, id: :contact_telephone, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= form.label :description, 'Om meg' %>
+        <%= form.text_area :description, id: :contact_description, :class => 'summernote' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+     <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= form.submit 'Lagre', :class => "btn btn-primary btn-block" %>
+        </div>
+        <div class="panel-body">
+          <div class="checkbox checkbox-primary">
+            <%= form.check_box :ispublished, :class => "" %>
+            <%= form.label :ispublished, 'Publisere' %>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <span class="text-muted small">
+            Opprettet: <%= @contact.created_at.to_s(:long) if @contact.created_at? %><br>
+            Sist oppdatert: <%= @contact.updated_at.to_s(:long) if @contact.updated_at? %>
+          </span> 
+        </div>
+      </div>
+
+
+      <div class="panel">
+        <div class="panel-header">Profilbilde</div>
+        <div class="panel-body">
+          <div class="img-responsive" id="image-holder">
+            <%= image_tag @contact.image_url(:thumb) if @contact.image? %>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <%= form.label :image, :class => "btn btn-info btn-sm btn-block" do %>
+            <%= form.file_field :image, :class => 'hide'%>Velg bilde
+          <% end %>
+        </div>
+      </div>              
+ 
+    </div>
+  </div>
+ 
+<% end %>
+
+
+<script type="text/javascript">
+  $(function() {
+    $('.summernote').summernote({
+      height: 200,
+      tabsize: 4,
+      toolbar: [
+                 ["style", ["style"]],
+                 ["style", ["bold", "italic", "underline", "clear"]],
+                 ["table", ["table"]],
+                 ["para", ["ul", "ol", "paragraph"]],
+                 ['extensions', ['gallery']],
+                 ['insert', ['videoAttributes']],  
+                 ['insert', ['link']],  
+                 ['insert', ['hr']]
+                 
+             ],
+        callbacks :{
+             onInit: function() {
+                $(this).data('image_dialog_images_url', '<%= admin_photos_list_url %>');
+                $(this).data('image_dialog_title', "Bilde galleri");
+                $(this).data('image_dialog_close_btn_text', "Lukk");
+                $(this).data('image_dialog_ok_btn_text', "Ok");
+            }
+        }             
+      });
+    });
+  </script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#contact_image").on('change', function() {
+    //Get count of selected files
+    var countFiles = $(this)[0].files.length;
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var image_holder = $("#image-holder");
+    image_holder.empty();
+    if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+      if (typeof(FileReader) != "undefined") {
+        //loop for each file selected for uploaded.
+        for (var i = 0; i < countFiles; i++) 
+        {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            $("<img />", {
+              "src": e.target.result,
+              "class": "thumb-image"
+            }).appendTo(image_holder);
+          }
+          image_holder.show();
+          reader.readAsDataURL($(this)[0].files[i]);
+        }
+      } else {
+        alert("This browser does not support FileReader.");
+      }
+    } else {
+      alert("Pls select only images");
+    }
+  });
+});
+</script>

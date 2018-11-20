@@ -1,0 +1,38 @@
+.bg-primary {
+    background-color: #60dbe4!important;
+}
+a.bg-primary:focus, a.bg-primary:hover {
+    background-color: #60dbe4!important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.floatleft {
+    float: left
+}
+
+.floatright {
+    float: right
+}
+
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.wave-2 {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTQ0MCA3ODAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE0NDAgNzgwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzYwREJFNDt9PC9zdHlsZT48dGl0bGU+V2F2ZTwvdGl0bGU+PGRlc2M+UmVzdG9yYXRpdiBtYXNzYXNqZTwvZGVzYz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNNjg1LjYsMzguOEM0MTguNy0xMS4xLDE3MC4yLDkuOSwwLDMwdjk2aDE0NDBWMzBDMTI1Mi43LDUyLjIsMTAxMCw5OS40LDY4NS42LDM4Ljh6Ii8+PHJlY3QgeT0iMTI2IiBjbGFzcz0ic3QwIiB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSIzMzEiLz48L3N2Zz4=);
+}

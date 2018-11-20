@@ -1,0 +1,26 @@
+<%= form_for [:admin, @section] do |f| %>
+  <% if @section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@section.errors.count, "error") %> prohibited this admin_category from being saved:</h2>
+
+      <ul>
+      <% @section.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, 'Seksjon', :class => "" %>
+    <%= f.text_field :title, :class => 'form-control', :placeholder => "Seksjonsnavn" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, 'Beskrivelse' %><br>
+     <%= f.text_area :description, :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Lagre seksjon', :class => 'btn btn-info' %>
+  </div>
+<% end %>
+

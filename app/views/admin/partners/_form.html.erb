@@ -1,0 +1,99 @@
+<%= form_for [:admin, @partner ], html: { multipart: true } do |form| %>
+  <% if @partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+      <ul>
+      <% @partner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <input type="hidden" name="partner[section_id]" id="partner_section_id" value="<%= params[:cat] %>" />
+      <div class="form-group">
+        <%= form.label :title, 'Samarbeidspartner' %>
+        <%= form.text_field :title, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :description, 'Beskrivelse' %>
+        <%= form.text_area :description, id: :partner_description, :class => 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :link, 'URL' %>
+        <%= form.text_field :link, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-4">
+     <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= form.submit 'Lagre', :class => "btn btn-primary btn-block" %>
+        </div>
+        <div class="panel-body">
+          <div class="checkbox checkbox-primary">
+            <%= form.check_box :ispublished, :class => "" %>
+            <%= form.label :ispublished, 'Publisere' %>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <span class="text-muted small">
+            Opprettet: <%= @partner.created_at.to_s(:long) if @partner.created_at? %><br>
+            Sist oppdatert: <%= @partner.updated_at.to_s(:long) if @partner.updated_at? %>
+          </span> 
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Samarbeidspartner logo</div>
+        <div class="panel-body">
+          <div class="img-responsive" id="image-holder">
+            <%= image_tag @partner.logo_url(:thumb) if @partner.logo? %>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <%= form.label :logo, :class => "btn btn-info btn-sm btn-block" do %>
+            <%= form.file_field :logo, :class => 'hide'%>Velg logo
+          <% end %>
+        </div>
+      </div>              
+ 
+    </div>
+  </div>
+ 
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#partner_logo").on('change', function() {
+    //Get count of selected files
+    var countFiles = $(this)[0].files.length;
+    var imgPath = $(this)[0].value;
+    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+    var image_holder = $("#image-holder");
+    image_holder.empty();
+    if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+      if (typeof(FileReader) != "undefined") {
+        //loop for each file selected for uploaded.
+        for (var i = 0; i < countFiles; i++) 
+        {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            $("<img />", {
+              "src": e.target.result,
+              "class": "thumb-image"
+            }).appendTo(image_holder);
+          }
+          image_holder.show();
+          reader.readAsDataURL($(this)[0].files[i]);
+        }
+      } else {
+        alert("This browser does not support FileReader.");
+      }
+    } else {
+      alert("Pls select only images");
+    }
+  });
+});
+</script>

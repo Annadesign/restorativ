@@ -1,0 +1,23 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+      <h4>Artikler</h4>
+      <div id="articles" class="list-group" data-url="<%= reorder_admin_articles_path %>">
+        <% @articles.each do |article| %>
+          <div id="<%= dom_id(article) %>" class="list-group-item">
+            <%= link_to article.title, edit_admin_article_path(article, :cat => article.section_id) %>  
+            <span class="badge badge-danger">
+              <span><%= article.position %></span>
+                <%= link_to 'Slett', admin_article_path(article), method: :delete, data: { confirm: 'Er du sikker?' }, :style => 'color:#fff;' %>  
+            </span>
+          </div>
+        <% end %>
+      </div>
+
+      <br>
+
+      <%= link_to 'Ny artikkel', new_admin_article_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="ibox">
+  <div class="ibox-title"><h2><i class="fa fa-id-card"></i> Samarbeidspartnere</h2></div>
+  <div class="ibox-content">
+    <div class="panel-body">
+      <table class="table table-bordered table-hover" >
+        <thead>
+          <tr>
+            <th>Samarbeidspartner</th>
+            <th>Link</th>
+            <th colspan="2">Slette</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @partners.each do |partner| %>
+            <tr>
+              <td><%= link_to partner.title, edit_admin_partner_path(partner, :cat => params[:cat]) %></td>
+
+              <td><%= partner.link %></td>
+              
+
+              <td><%= link_to 'Slette', admin_partner_url(partner, :cat => params[:cat]), :class => 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Er du sikker på at du vil slette?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Ny samarbeidspartner', new_admin_partner_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+  
+    </div>
+  </div>
+</div>

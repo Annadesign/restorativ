@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Restorativ massasje</title>
+     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+   
+</head>
+
+<body>
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+    <% if session[:current_moderator_id] %>
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+
+                <li class="<%= is_active_controller('admin/dashboard') %>">
+                    <%= link_to admin_dashboard_index_path do %>
+                        <i class="fa fa-th"></i> Oversikt
+                    <% end %>
+                </li>
+                <li class="<%= is_active_controller('admin/moderators') %>">
+                    <%= link_to admin_moderators_path do %>
+                        <i class="fa fa-user-lock"></i> Administratorer
+                    <% end %>
+                </li>
+                           
+                <li class="<%= is_active_controller('admin/sections') %>">
+                    <%= link_to admin_sections_path do %>
+                        <i class="fa fa-align-justify"></i> Seksjoner
+                    <% end %>
+                </li>  
+
+                <li class="<%= is_active_controller('admin/articles') %>">
+                    <%= link_to admin_articles_path(:cat => '2') do %>
+                        <i class="fa fa-align-justify"></i> Artikler
+                    <% end %>
+                </li>                
+            </ul>
+         
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                
+            </div>
+            
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message"><%= @moderator.fullname %></span>
+                </li>
+
+                <li>						
+					<%= link_to 'Logg ut', logout_path %>	
+                </li>
+            </ul>      
+        </nav>
+        <% end %>
+        </div>
+ 
+        <div class="wrapper wrapper-content animated fadeIn">
+
+			<% if flash[:notice] %>
+				<div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <%= flash[:notice] %> 
+                   
+                </div>
+			<% end %>
+			<% if flash[:alert] %>
+				<div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <%= flash[:alert] %> 
+                   
+                </div>
+			<% end %>
+
+            <div class="row">
+
+            	<%= yield %>
+
+            </div>
+
+
+        </div>
+         <div id='modal-holder'></div>
+        <div class="footer">
+            <div class="pull-right">
+                <strong>AN|NA</strong> design.
+            </div>
+            <div>
+                <strong>Restorativ Massasje</strong> &copy; <%= Date.today.year %>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ 
+</body>
+
+</html>

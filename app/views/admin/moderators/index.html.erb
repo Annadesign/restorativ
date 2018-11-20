@@ -1,0 +1,39 @@
+<div class="ibox">
+	<div class="ibox-title"><h2><i class="fa fa-user-lock"></i> Administratorer</h2></div>
+    <div class="ibox-content">
+        <div class="panel-body">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Fullt navn</th>
+						<th>Brukernavn</th>
+						
+						<th colspan="2">Handlinger</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @moderators.each do |moderator| %>
+					<tr>
+						<td><%= moderator.fullname %></td>
+						<td><%= moderator.username %></td>
+						
+						<td>
+							<%= link_to 'Endre', edit_admin_moderator_path(moderator), :class => 'btn btn-info btn-xs' %>
+						</td>
+						<td>
+							<%= link_to 'Slette', "#", :class => 'btn btn-danger btn-xs' %>
+								
+							</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<br>
+			<%= link_to 'Ny administrator', new_admin_moderator_path, :class => 'btn btn-primary' %>
+		</div>
+	</div>
+</div>
+
+
+
+

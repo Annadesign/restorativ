@@ -1,0 +1,218 @@
+#image-holder img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+.style-toggle-body .colors > .yellow {
+  background-color: #fff6ad;
+}
+
+.style-toggle-body .colors > .blue {
+  background-color: #8ad4f3;
+}
+
+.style-toggle-body .colors > .pink {
+  background-color: #e7bbd5;
+}
+
+.style-toggle-body {
+    padding: 10px;
+}
+.text-center {
+    text-align: center;
+}
+
+.style-toggle-body .colors {
+    margin: 0;
+}
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.style-toggle-body .colors > .green {
+    background-color: #f7902e;
+}
+.style-toggle-body .colors > li {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ibox-tools a {
+  color: #fff;
+}
+
+/* VIKTIGE BESKJEDER */
+
+.viktig { 
+    width:100%;   
+    padding: 1em 1em;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 0;
+    color: black;
+}
+
+.viktig h2 {
+
+    font-family: brandon-grotesque;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    letter-spacing: .075em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+}
+
+.yellow {
+    background-color: #fff6ad;
+}
+
+.blue {
+    background-color: #a8d4f3;
+}
+
+.pink {
+    background-color: #e7bbd5;
+}
+
+/* AVDELINGER */
+.contact-box.avdeling-yellow{
+    background-color: rgba(255,256,173,.5);
+}
+
+.contact-box.avdeling-blue{
+    background-color: rgba(168,212,243,.5);
+}
+
+.contact-box.avdeling-pink {
+    background-color: rgba(231,187,213,.5);
+}
+
+/* RADIO/CHECKBOX */
+
+.frb-group {
+  margin: 15px 0;
+}
+
+.frb ~ .frb {
+  margin-top: 15px;
+}
+
+.frb input[type="radio"]:empty,
+.frb input[type="checkbox"]:empty {
+  display: none;
+}
+
+.frb input[type="radio"] ~ label:before,
+.frb input[type="checkbox"] ~ label:before {
+  font-family: FontAwesome;
+  content: '\f096';
+  position: absolute;
+  top: 50%;
+  margin-top: -11px;
+  left: 15px;
+  font-size: 22px;
+}
+
+.frb input[type="radio"]:checked ~ label:before,
+.frb input[type="checkbox"]:checked ~ label:before {
+  content: '\f046';
+}
+
+.frb input[type="radio"] ~ label,
+.frb input[type="checkbox"] ~ label {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.frb input[type="radio"] ~ label:focus,
+.frb input[type="radio"] ~ label:hover {
+  box-shadow: 0px 0px 3px #333;
+}
+
+.frb input[type="radio"]:checked ~ label,
+.frb input[type="checkbox"]:checked ~ label {
+  color: #fafafa;
+}
+
+.frb input[type="radio"]:checked ~ label,
+.frb input[type="checkbox"]:checked ~ label {
+  background-color: #f2f2f2;
+}
+
+.frb.frb-default input[type="radio"]:checked ~ label,
+.frb.frb-default input[type="checkbox"]:checked ~ label {
+  color: #333;
+}
+
+.frb.frb-primary input[type="radio"]:checked ~ label,
+.frb.frb-primary input[type="checkbox"]:checked ~ label {
+  background-color: #337ab7;
+}
+
+.frb.frb-success input[type="radio"]:checked ~ label,
+.frb.frb-success input[type="checkbox"]:checked ~ label {
+  background-color: #5cb85c;
+}
+
+.frb.frb-info input[type="radio"]:checked ~ label,
+.frb.frb-info input[type="checkbox"]:checked ~ label {
+  background-color: #5bc0de;
+}
+
+.frb.frb-warning input[type="radio"]:checked ~ label,
+.frb.frb-warning input[type="checkbox"]:checked ~ label {
+  background-color: #f0ad4e;
+}
+
+.frb.frb-danger input[type="radio"]:checked ~ label,
+.frb.frb-danger input[type="checkbox"]:checked ~ label {
+  background-color: #d9534f;
+}
+
+.frb input[type="radio"]:empty ~ label span,
+.frb input[type="checkbox"]:empty ~ label span {
+  display: inline-block;
+}
+
+.frb input[type="radio"]:empty ~ label span.frb-title,
+.frb input[type="checkbox"]:empty ~ label span.frb-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 5px 5px 50px;
+}
+
+.frb input[type="radio"]:empty ~ label span.frb-description,
+.frb input[type="checkbox"]:empty ~ label span.frb-description {
+  font-weight: normal;
+  font-style: italic;
+  color: #999;
+  margin: 5px 5px 5px 50px;
+}
+
+.frb input[type="radio"]:empty:checked ~ label span.frb-description,
+.frb input[type="checkbox"]:empty:checked ~ label span.frb-description {
+  color: #fafafa;
+}
+
+.frb.frb-default input[type="radio"]:empty:checked ~ label span.frb-description,
+.frb.frb-default input[type="checkbox"]:empty:checked ~ label span.frb-description {
+  color: #999;
+}

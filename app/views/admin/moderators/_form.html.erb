@@ -1,0 +1,61 @@
+
+
+
+
+<%= form_for [:admin, @moderator], :html => {:id => 'identicalForm' } do |f| %>
+  <% if @moderator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moderator.errors.count, "error") %> prohibited this admin_department from being saved:</h2>
+
+      <ul>
+      <% @moderator.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="tabs-container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">Brukernavn</a></li>
+        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">Passord</a></li>
+    </ul> 
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label :fullname, 'Navn', :class => "" %>
+              <%= f.text_field :fullname, :class => 'form-control', :placeholder => "Fullt navn" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :username, 'Brukernavn/Epost', :class => "" %>
+              <%= f.text_field :username, :class => 'form-control', :placeholder => "Brukernavn" %>
+            </div> 
+          </div><!-- /panel-body -->
+        </div><!-- /tab-pane -->
+        <div id="tab-2" class="tab-pane">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label :password, 'Passord', :class => "" %>
+              <%= f.password_field :password, {:class => 'form-control', :placeholder => 'Passord', 'data-bv-identical' => 'true', 'data-bv-identical-field' => 'confirmPassword', 'data-bv-identical-message' => 'The password and its confirm are not the same' } %>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Gjenta passord</label>
+              <input type="password" class="form-control" name="confirmPassword"
+                  data-bv-identical="true"
+                  data-bv-identical-field="moderator[password]"
+                  data-bv-identical-message="The password and its confirm are not the same" />
+            </div>
+          </div><!-- /panel-body -->
+        </div><!-- /tab-pane -->
+
+        <div class="actions" style="margin-top:20px;">
+          <%= f.submit 'Lagre administrator', :class => 'btn btn-primary' %>
+          
+        </div>
+
+      </div><!-- /tab-content -->
+
+  </div><!-- /tabs-container -->
+<% end %>

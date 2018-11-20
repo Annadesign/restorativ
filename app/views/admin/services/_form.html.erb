@@ -1,0 +1,48 @@
+<%= form_for [:admin, @service] do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% @service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<input type="hidden" name="service[section_id]" id="service_section_id" value="<%= params[:cat] %>" />
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= f.label :title, 'Tjeneste tittel', :class => "" %>
+        <%= f.text_field :title, :class => 'form-control', :placeholder => "Tjeneste tittel" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :icon, 'Fontawesome ikon', :class => "" %>
+        <%= f.text_field :icon, :class => 'form-control', :placeholder => "Ikon" %>
+      </div>  
+      <div class="form-group">
+        <%= f.label :description, 'Beskrivelse' %><br>
+         <%= f.text_area :description, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= f.submit 'Lagre Tjeneste', :class => "btn btn-primary btn-block" %>
+        </div>
+        <div class="panel-body">
+
+        </div>
+        <div class="panel-footer">
+          <span class="text-muted small">
+            Opprettet: <%= @service.created_at.to_s(:long) if @service.created_at? %><br>
+            Sist oppdatert: <%= @service.updated_at.to_s(:long) if @service.updated_at? %>
+          </span> 
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

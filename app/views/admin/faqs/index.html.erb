@@ -1,0 +1,33 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+
+
+      <table class="table table-bordered table-hover" >
+        <thead>
+          <tr>
+            <th>Spørsmål</th>
+            <th>Svar</th>
+            <th colspan="2">Handlinger</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @faqs.each do |faq| %>
+            <tr>
+              <td><%= faq.question %></td>
+              <td><%= faq.answer.html_safe %></td>
+              <td><%= link_to 'Redigere', edit_admin_faq_path(faq, :cat => params[:cat]), :class => 'btn btn-info btn-xs' %></td>
+              <td><%= link_to 'Slett', admin_faq_path(faq, :cat => params[:cat]), :class => 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Er du sikker?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'Nytt spørsmål', new_admin_faq_path(:cat => params[:cat]), :class => 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>

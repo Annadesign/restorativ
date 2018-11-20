@@ -1,0 +1,120 @@
+<%= form_for [:admin, @project] do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this admin_project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">  
+          <input type="hidden" name="project[section_id]" id="project_section_id" value="<%= params[:cat] %>" />
+          <div class="form-group">
+            <%= f.label :title, 'Prosjekt', :class => "" %>
+            <%= f.text_field :title, :class => 'form-control', :placeholder => "Prosjekt" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :summary, 'Ingress' %><br>
+             <%= f.text_area :summary, :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :content, 'Brødtekst' %><br>
+             <%= f.text_area :content, :class => "summernote" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= f.submit 'Lagre', :class => "btn btn-primary btn-block" %>
+        </div>
+        <div class="panel-body">
+          <div class="checkbox checkbox-primary">
+            <%= f.check_box :ispublished, :class => "" %>
+            <%= f.label :ispublished, 'Publisere' %>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <span class="text-muted small">
+            Opprettet: <%= @project.created_at.to_s(:long) if @project.created_at? %><br>
+            Sist oppdatert: <%= @project.updated_at.to_s(:long) if @project.updated_at? %>
+          </span> 
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Hovedbilde
+        </div>
+        <div class="panel-body">
+
+        <div class="img-responsive" id="image-holder">
+          <%= image_tag @project.image_url(:thumb) if @project.image?%>
+        </div>
+
+      </div>
+      <div class="panel-footer">
+        <%= f.label :image, :class => "btn btn-info btn-block" do %>
+          <%= f.file_field :image, :class => 'hide'%>Velg bilde
+        <% end %>  
+      </div>  
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.summernote').summernote({
+      height: 250,
+      tabsize: 4,
+      toolbar: [
+                 ["style", ["style"]],
+                 ["style", ["bold", "italic", "underline", "clear"]],
+                 ["table", ["table"]],
+ 
+                 ["color", ["color"]],
+                 ["para", ["ul", "ol", "paragraph"]],
+                 ['insert', ['link', 'picture', 'videoAttributes']],  
+                 ['insert', ['hr', 'fullscreen']]
+             ]
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#project_image").on('change', function() {
+        var countFiles = $(this)[0].files.length;
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#image-holder");
+        image_holder.empty();
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+          if (typeof(FileReader) != "undefined") {
+            //loop for each file selected for uploaded.
+            for (var i = 0; i < countFiles; i++) 
+            {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                $("<img />", {
+                  "src": e.target.result,
+                  "class": "thumb-image"
+                }).appendTo(image_holder);
+              }
+              image_holder.show();
+              reader.readAsDataURL($(this)[0].files[i]);
+            }
+          } else {
+            alert("This browser does not support FileReader.");
+          }
+        } else {
+          alert("Pls select only images");
+        }
+      });
+    });
+  </script>

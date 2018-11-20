@@ -1,0 +1,55 @@
+    <!-- Intro Restorativ massasje -->
+    <section class="landing_welcome_area height-700 landing_one_version background-overlay jarallax" style="background-image: url(<%= asset_path 'bg-index.jpg' %>);" id="home">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <!-- Welcome Text  -->
+            <div class="landing_hero_text text-center">
+              <h2 class="fonts-shadow-into-light"><%= @sections[0].title %></h2>
+              <p style="margin-top: 15px;"><%= @sections[0].description %></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Intro -->    
+
+    <!-- Artikler -->
+    <section class="about_us_area landing_one_version clearfix section_padding_100_70 clearfix" id="tjenester">
+	<% @articles.each do |art| %>
+  		<%= render art.template, artic: art %>
+	<% end %>	    		
+    </section>
+    <!-- Artikler -->    
+    <!-- Bølger -->
+    <section class="landing_welcome_area height-700 landing_one_version" style="background-image: url(<%= asset_path 'waves-web.jpg' %>);" id="waves">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-12">
+            <!-- Welcome Text  -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Bølger -->    
+    <!-- Kontakt -->
+    <section class="message_now_area landing_one_version section_padding_100_70" id="kontakt">
+        <div class="container">
+            <div class="row justify-content">
+                <div class="col-md-12">
+                    <div class="message_title">
+                        <div class="section_heading">
+                            <h3>Ta kontakt for en uforpliktende prat</h3>
+                        </div>
+                    </div>
+                    <div class="image" style="text-align: center; width:100%"><%= image_tag('signy-web.jpg', :class => "", :style => "width:450px;") %></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Kontakt -->
+
+
+
+

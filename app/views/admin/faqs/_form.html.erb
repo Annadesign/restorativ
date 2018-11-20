@@ -1,0 +1,71 @@
+<%= form_for [:admin, @faq] do |f| %>
+  <% if @faq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faq.errors.count, "error") %> prohibited this faq from being saved:</h2>
+
+      <ul>
+      <% @faq.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<input type="hidden" name="faq[section_id]" id="faq_section_id" value="<%= params[:cat] %>" />
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= f.label :question, 'Spørsmål', :class => "" %>
+        <%= f.text_field :question, :class => 'form-control', :placeholder => "Spørsmål" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :answer, 'Svar' %><br>
+         <%= f.text_area :answer, :class => "summernote" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= f.submit 'Lagre spørsmål', :class => "btn btn-primary btn-block" %>
+        </div>
+        <div class="panel-body">
+
+        </div>
+        <div class="panel-footer">
+          <span class="text-muted small">
+            Opprettet: <%= @faq.created_at.to_s(:long) if @faq.created_at? %><br>
+            Sist oppdatert: <%= @faq.updated_at.to_s(:long) if @faq.updated_at? %>
+          </span> 
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(function() {
+    $('.summernote').summernote({
+      height: 200,
+      tabsize: 4,
+      toolbar: [
+                 ["style", ["style"]],
+                 ["style", ["bold", "italic", "underline", "clear"]],
+                 ["table", ["table"]],
+                 ["para", ["ul", "ol", "paragraph"]],
+                 ['extensions', ['gallery']],
+                 ['insert', ['videoAttributes']],  
+                 ['insert', ['link']],  
+                 ['insert', ['hr']]
+                 
+             ],
+        callbacks :{
+             onInit: function() {
+                $(this).data('image_dialog_images_url', '<%= admin_photos_list_url %>');
+                $(this).data('image_dialog_title', "Bilde galleri");
+                $(this).data('image_dialog_close_btn_text', "Lukk");
+                $(this).data('image_dialog_ok_btn_text', "Ok");
+            }
+        }             
+      });
+    });
+  </script>

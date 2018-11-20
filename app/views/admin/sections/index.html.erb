@@ -1,0 +1,22 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+      <h4>Seksjoner</h4>
+      <div id="sections" class="list-group" data-url="<%= reorder_admin_sections_path %>">
+        <% @sections.each do |section| %>
+          <div id="<%= dom_id(section) %>" class="list-group-item">
+            <%= link_to section.title, edit_admin_section_path(section) %>  
+            <span class="badge badge-danger">
+                <%= link_to 'Slett', admin_section_path(section), method: :delete, data: { confirm: 'Er du sikker?' }, :style => 'color:#fff;' %>  
+            </span>
+          </div>
+        <% end %>
+      </div>
+     
+      <br>
+
+      <%= link_to 'Ny seksjon', new_admin_section_path(:cat => params[:cat]), :class => 'btn btn-sm btn-info' %>
+
+    </div>
+  </div>
+</div>
