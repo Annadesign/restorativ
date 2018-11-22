@@ -1,0 +1,14 @@
+
+    <div class="row align-items-center">
+        <div class="col-sm-6 col-lg-8">
+            <div class="key_features_text">
+                <h3><%= artic.title %></h3>
+                <div><%= artic.content.html_safe %></div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="key_features_img">
+                 <%= image_tag(artic.image, :class => "", :alt => "") if artic.image? %>
+            </div>
+        </div>
+    </div>
