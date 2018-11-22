@@ -34,8 +34,10 @@
     <!-- Bølger --> 
     <!-- Fakta -->  
     <section class="about_us_area landing_one_version section_padding_100_70 clearfix" id="kontakt">
+      <div class="container">
     <% @facts.each do |fact| %>
       <%= render fact.template, artic: fact %>
-    <% end %>         
+    <% end %>  
+    </div>       
     </section>
     <!-- /Fakta-->
